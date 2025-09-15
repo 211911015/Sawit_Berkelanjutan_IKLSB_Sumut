@@ -352,6 +352,19 @@
     function initializeCustomFeatures() {
       console.log("Peta IKLSB siap. Memulai skrip kustom untuk Sumatera Utara.");
 
+      // Tambahkan Google Satellite base layer
+      const googleSatelliteLayer = new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+          attributions: '© Google'
+        }),
+        title: 'Google Satellite',
+        type: 'base'
+      });
+
+      // Tambahkan base layer ke map sebagai layer pertama (background)
+      map.getLayers().insertAt(0, googleSatelliteLayer);
+
       // Data layer dan style functions untuk semua kabupaten/kota di Sumatera Utara
       const allJsonData = [
         json_Toba_1, json_TapanuliUtara_2, json_TapanuliTengah_3, json_TapanuliSelatan_4, json_Simalungun_5,
@@ -447,7 +460,7 @@
 
       // Sembunyikan layer asli
       map.getLayers().forEach(layer => {
-        if (layer.get('title') !== 'BatasKabupatenSumateraUtara') {
+        if (layer.get('title') !== 'BatasKabupatenSumateraUtara' && layer.get('title') !== 'Google Satellite') {
           layer.setVisible(false);
         }
       });
