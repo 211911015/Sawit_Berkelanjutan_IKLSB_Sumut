@@ -26,11 +26,11 @@
       width: 100%;
     }
     #sidebar {
-      width: 340px;
+      width: 350px;
       flex-shrink: 0;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      background-color: #f8f9fa;
       padding: 20px;
-      box-shadow: 3px 0 15px rgba(0,0,0,0.1);
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
       overflow-y: auto;
       z-index: 1000;
     }
@@ -39,97 +39,64 @@
       height: 100%;
     }
     #sidebar h1 {
-      font-size: 22px;
-      color: #2c3e50;
+      font-size: 20px;
+      color: #333;
       margin-top: 0;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       line-height: 1.3;
-      text-align: center;
-      font-weight: 600;
-      border-bottom: 3px solid #3498db;
-      padding-bottom: 15px;
     }
     .legend-section, .search-section {
-      margin-bottom: 30px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
     }
     .legend-section h2, .search-section h2 {
       font-size: 16px;
-      color: #2c3e50;
-      border-bottom: 2px solid #e74c3c;
+      border-bottom: 1px solid #ddd;
       padding-bottom: 8px;
       margin-bottom: 15px;
-      font-weight: 600;
     }
     .legend-item {
       display: flex;
       align-items: center;
-      margin-bottom: 12px;
-      padding: 8px;
-      border-radius: 5px;
-      transition: background-color 0.2s;
-    }
-    .legend-item:hover {
-      background-color: #f8f9fa;
+      margin-bottom: 8px;
     }
     .legend-color {
-      width: 24px;
-      height: 24px;
-      margin-right: 12px;
-      border: 2px solid #333;
-      border-radius: 5px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
-    .legend-item span {
-      font-weight: 500;
-      color: #2c3e50;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      border: 1px solid #888;
+      border-radius: 3px;
     }
     .search-container {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
     #search-input {
       width: 100%;
-      padding: 12px;
+      padding: 8px;
       font-size: 14px;
-      border: 2px solid #bdc3c7;
-      border-radius: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       box-sizing: border-box;
-      transition: border-color 0.3s;
-    }
-    #search-input:focus {
-      border-color: #3498db;
-      outline: none;
     }
     #btn-reset {
-      padding: 12px 16px;
+      padding: 8px 12px;
       font-size: 14px;
-      border: 2px solid #e74c3c;
-      border-radius: 8px;
-      background: linear-gradient(135deg, #e74c3c, #c0392b);
-      color: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #e9ecef;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.3s;
-      font-weight: 500;
-    }
-    #btn-reset:hover {
-      background: linear-gradient(135deg, #c0392b, #a93226);
-      transform: translateY(-1px);
     }
 
     /* --- STYLE POPUP --- */
     .ol-popup {
       position: absolute;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      padding: 20px;
-      border-radius: 12px;
-      border: 2px solid #3498db;
-      min-width: 350px;
+      background-color: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      padding: 15px 18px;
+      border-radius: 8px;
+      border: 1px solid #cccccc;
+      min-width: 320px;
       font-size: 13px;
       z-index: 10000;
       pointer-events: auto;
@@ -137,198 +104,157 @@
     
     .ol-popup-closer {
       position: absolute;
-      top: 10px;
-      right: 15px;
-      background: #e74c3c;
+      top: 8px;
+      right: 12px;
+      background: none;
       border: none;
       font-size: 18px;
       cursor: pointer;
-      color: white;
-      padding: 5px;
-      width: 25px;
-      height: 25px;
+      color: #666;
+      padding: 0;
+      width: 20px;
+      height: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      transition: all 0.3s;
     }
     
     .ol-popup-closer:hover {
-      background: #c0392b;
-      transform: scale(1.1);
+      color: #000;
     }
     
     #popup-content h3 {
-      margin: 0 0 5px 0;
-      font-size: 18px;
-      color: #2c3e50;
-      padding-right: 35px;
-      font-weight: 600;
+      margin: 0 0 2px 0;
+      font-size: 16px;
+      color: #000;
+      padding-right: 25px;
     }
     #popup-content h4 {
-      margin: 0 0 15px 0;
-      font-size: 16px;
-      color: #27ae60;
-      font-weight: 600;
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #555;
+      font-weight: normal;
     }
     #popup-content hr {
       border: 0;
-      border-top: 2px solid #ecf0f1;
-      margin: 15px 0;
+      border-top: 1px solid #eee;
+      margin: 10px 0;
     }
     .popup-table { 
       width: 100%; 
       border-spacing: 0; 
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     .popup-table td { 
-      padding: 6px 0; 
+      padding: 4px 0; 
       vertical-align: top; 
       font-size: 13px;
     }
     .popup-table td:first-child {
-      font-weight: 600;
-      color: #2c3e50;
-      width: 180px;
-    }
-    .popup-table td:last-child {
-      color: #34495e;
+      font-weight: 500;
+      color: #333;
+      width: 160px;
     }
     
     .interpretasi {
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 13px;
-      line-height: 1.5;
-      color: #2c3e50;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      line-height: 1.4;
+      color: #444;
     }
     .interpretasi h2 {
-      font-size: 16px;
-      margin-bottom: 15px;
-      color: #2c3e50;
-      border-bottom: 2px solid #27ae60;
-      padding-bottom: 8px;
-      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
     }
-    .interpretasi .kategori {
-      margin: 12px 0;
-      padding: 10px;
-      border-left: 4px solid #3498db;
-      background: #f8f9fa;
-      border-radius: 0 5px 5px 0;
-    }
-    .interpretasi .kategori strong {
-      color: #2c3e50;
-      display: block;
-      margin-bottom: 5px;
+    .interpretasi p {
+      margin: 8px 0;
+      text-align: justify;
     }
 
     /* Suitability class indicator */
     .suitability-indicator {
       display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
       font-size: 12px;
-      margin-left: 8px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      margin-left: 5px;
     }
     
-    .suitability-s1 { background: linear-gradient(135deg, #2d5016, #3e6b1f); color: white; }
-    .suitability-s2 { background: linear-gradient(135deg, #85b66f, #6fa055); color: white; }
-    .suitability-s3 { background: linear-gradient(135deg, #fec980, #f4a460); color: #333; }
-    .suitability-n { background: linear-gradient(135deg, #ff0900, #cc0700); color: white; }
+    .suitability-s1 { background-color: #2d5016; color: white; }
+    .suitability-s2 { background-color: #85b66f; color: white; }
+    .suitability-s3 { background-color: #fec980; color: #333; }
+    .suitability-n { background-color: #ff0900; color: white; }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      #sidebar {
-        width: 300px;
-      }
-      .ol-popup { 
-        min-width: 280px; 
-        font-size: 12px; 
-        padding: 15px;
-      }
-      .popup-table td:first-child { 
-        width: 140px; 
-        font-size: 12px;
-      }
+    /* small screens: make popup narrower */
+    @media (max-width: 420px) {
+      .ol-popup { min-width: 200px; font-size: 12px; }
+      .popup-table td:first-child { width: 120px; }
+      #sidebar { width: 300px; }
     }
 
-    /* Control styling improvements */
-    .ol-control > * {
-      background: linear-gradient(135deg, #f8f8f8, #e9ecef) !important;
-      color: #2c3e50 !important;
-      border-radius: 8px !important;
-      border: 1px solid #bdc3c7 !important;
-    }
-    .ol-control > *:hover {
-      background: linear-gradient(135deg, #e9ecef, #dee2e6) !important;
-      border-color: #95a5a6 !important;
-    }
-    .ol-control {
-      background-color: rgba(255,255,255,.8) !important;
-      padding: 3px !important;
-      border-radius: 10px !important;
+    /* Styling untuk label kabupaten */
+    .kabupaten-label {
+      font-size: 11px;
+      font-weight: bold;
+      color: #000;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+      pointer-events: none;
     }
   </style>
-  <title>Peta Kesesuaian Lahan Provinsi Sumatera Utara</title>
+  <title>Peta Indeks Kesesuaian Lahan Sawit Berkelanjutan (IKLSB) Provinsi Sumatera Utara</title>
 </head>
 <body>
   <div id="app-container">
     <div id="sidebar">
-      <h1>Peta Kesesuaian Lahan Desa/Kelurahan Provinsi Sumatera Utara</h1>
+      <h1>Peta Indeks Kesesuaian Lahan Sawit Berkelanjutan (IKLSB) Provinsi Sumatera Utara</h1>
 
       <div class="search-section">
-        <h2>🔍 Cari Kabupaten / Kota</h2>
+        <h2>Pilih Kabupaten / Kota</h2>
         <div class="search-container">
-          <input type="text" id="search-input" placeholder="Ketik nama kabupaten/kota...">
-          <button id="btn-reset" title="Kembali ke tampilan awal Sumatera Utara">Reset</button>
+          <input type="text" id="search-input" placeholder="Ketik nama...">
+          <button id="btn-reset" title="Kembali ke Sumatera Utara">Reset</button>
         </div>
       </div>
 
       <div class="legend-section">
-        <h2>🎨 Kelas Kesesuaian Lahan</h2>
+        <h2>Kelas Kesesuaian Lahan</h2>
         <div class="legend-item">
-          <div class="legend-color" style="background: linear-gradient(135deg, #2d5016, #3e6b1f);"></div>
-          <span>S1 - Sangat Sesuai</span>
+          <div class="legend-color" style="background-color: #2d5016;"></div>
+          <span>S1 - Sangat Sesuai (22,5%)</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background: linear-gradient(135deg, #85b66f, #6fa055);"></div>
-          <span>S2 - Cukup Sesuai</span>
+          <div class="legend-color" style="background-color: #85b66f;"></div>
+          <span>S2 - Cukup Sesuai (42,7%)</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background: linear-gradient(135deg, #fec980, #f4a460);"></div>
-          <span>S3 - Sesuai Marjinal</span>
+          <div class="legend-color" style="background-color: #fec980;"></div>
+          <span>S3 - Sesuai Marginal (30,6%)</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background: linear-gradient(135deg, #ff0900, #cc0700);"></div>
-          <span>N - Tidak Sesuai</span>
+          <div class="legend-color" style="background-color: #ff0900;"></div>
+          <span>N - Tidak Sesuai (4,2%)</span>
         </div>
       </div>
 
       <div class="interpretasi">
-        <h2>📋 Penjelasan Kesesuaian Lahan</h2>
-        <div class="kategori">
-          <strong>🟢 S1 (Sangat Sesuai)</strong>
-          Lahan ini sangat baik untuk pertanian. Tidak ada masalah besar yang menghalangi produktivitas tinggi. Tanaman dapat tumbuh dengan optimal tanpa perlu perlakuan khusus.
-        </div>
-        <div class="kategori">
-          <strong>🟡 S2 (Cukup Sesuai)</strong>
-          Lahan masih bagus untuk pertanian, tetapi ada beberapa kendala ringan yang dapat mengurangi hasil panen. Dengan pengelolaan yang tepat, produktivitas masih dapat dipertahankan.
-        </div>
-        <div class="kategori">
-          <strong>🟠 S3 (Sesuai Marjinal)</strong>
-          Lahan memiliki kendala yang cukup berat untuk pertanian. Membutuhkan upaya ekstra dan investasi lebih besar untuk mencapai produktivitas yang memadai.
-        </div>
-        <div class="kategori">
-          <strong>🔴 N (Tidak Sesuai)</strong>
-          Lahan tidak cocok untuk pertanian karena memiliki kendala yang sangat berat. Sebaiknya digunakan untuk fungsi lain seperti konservasi atau hutan.
-        </div>
+        <h2>Interpretasi IKLSB</h2>
+        <p><b>S1 (Sangat Sesuai - 22,5%)</b> - Lahan dengan kondisi optimal untuk pengembangan sawit berkelanjutan. Terkonsentrasi di Kabupaten Labuhanbatu, Labuhanbatu Selatan, dan sebagian Asahan dengan akses infrastruktur baik dan risiko lingkungan rendah.</p>
+        
+        <p><b>S2 (Cukup Sesuai - 42,7%)</b> - Lahan dengan sedikit faktor pembatas yang dapat diatasi dengan pengelolaan yang baik. Mendominasi wilayah di Serdang Bedagai, Deli Serdang, Simalungun, dan Labuhanbatu Utara.</p>
+        
+        <p><b>S3 (Sesuai Marginal - 30,6%)</b> - Lahan dengan faktor pembatas yang memerlukan pengelolaan intensif dan investasi tambahan. Umumnya terletak di area transisi dan dataran tinggi.</p>
+        
+        <p><b>N (Tidak Sesuai - 4,2%)</b> - Lahan dengan faktor pembatas sangat berat yang tidak ekonomis untuk pengembangan sawit. Umumnya di wilayah pegunungan dan area dengan kendala lingkungan tinggi.</p>
+
+        <h2>Komponen Utama IKLSB</h2>
+        <p><b>Iklim (rata-rata 0,752)</b> - Kondisi optimal terutama di wilayah timur dan tenggara</p>
+        <p><b>Tanah (rata-rata 0,495)</b> - Faktor pembatas kedua, memerlukan program ameliorasi</p>
+        <p><b>Topografi (rata-rata 0,767)</b> - Umumnya mendukung di dataran rendah</p>
+        <p><b>Aksesibilitas (rata-rata 0,285)</b> - Faktor pembatas utama, memerlukan pembangunan infrastruktur</p>
+        <p><b>Lingkungan (rata-rata 0,966)</b> - Risiko lingkungan rendah di sebagian besar wilayah</p>
       </div>
     </div>
 
@@ -340,7 +266,7 @@
     </div>
   </div>
 
-  <!-- Script imports -->
+  <!-- Script imports dari qgis2web -->
   <script src="resources/qgis2web_expressions.js"></script>
   <script src="./resources/functions.js"></script>
   <script src="./resources/ol.js"></script>
@@ -424,7 +350,7 @@
   
   <script>
     function initializeCustomFeatures() {
-      console.log("Peta siap. Memulai skrip kustom untuk Sumatera Utara.");
+      console.log("Peta IKLSB siap. Memulai skrip kustom untuk Sumatera Utara.");
 
       // Data layer dan style functions untuk semua kabupaten/kota di Sumatera Utara
       const allJsonData = [
@@ -450,16 +376,19 @@
       // Fungsi untuk menentukan warna berdasarkan suitability class
       function getSuitabilityColor(suitabilityClass) {
         if (!suitabilityClass) {
-          return '#cccccc';
+          console.log('No suitability class found');
+          return '#cccccc'; // abu-abu untuk data kosong
         }
         
+        // Konversi ke string dan bersihkan dari whitespace
         const sc = suitabilityClass.toString().trim();
+        console.log('Suitability class found:', sc);
         
         // Pencocokan dengan kategori lengkap
-        if (sc === 'S1 - Sangat Sesuai') return '#2d5016';
-        if (sc === 'S2 - Cukup Sesuai') return '#85b66f';
-        if (sc === 'S3 - Sesuai Marjinal') return '#fec980';
-        if (sc === 'N - Tidak Sesuai') return '#ff0900';
+        if (sc === 'S1 - Sangat Sesuai') return '#2d5016'; // hijau tua
+        if (sc === 'S2 - Cukup Sesuai') return '#85b66f'; // hijau
+        if (sc === 'S3 - Sesuai Marjinal') return '#fec980'; // kuning/orange
+        if (sc === 'N - Tidak Sesuai') return '#ff0900'; // merah
         
         // Fallback untuk pencocokan partial case-insensitive
         const scLower = sc.toLowerCase();
@@ -468,10 +397,11 @@
         if (scLower.includes('s3') && (scLower.includes('sesuai marjinal') || scLower.includes('sesuai marginal'))) return '#fec980';
         if (scLower.includes('n') && scLower.includes('tidak sesuai')) return '#ff0900';
         
-        return '#cccccc';
+        console.log('No matching suitability class for:', sc);
+        return '#cccccc'; // default abu-abu
       }
 
-      // Fungsi style untuk suitability dengan stroke yang lebih tebal untuk desa
+      // Fungsi style baru untuk suitability
       function createSuitabilityStyle(feature) {
         const suitabilityClass = feature.get('Suitabil_1') || feature.get('Suitability_Class') || feature.get('SUITABILITY');
         const fillColor = getSuitabilityColor(suitabilityClass);
@@ -481,45 +411,13 @@
             color: fillColor
           }),
           stroke: new ol.style.Stroke({
-            color: '#2c3e50',
-            width: 0.3
+            color: '#333333',
+            width: 0.5
           })
         });
       }
 
-      // Style untuk batas kabupaten yang lebih tebal dengan label
-      function createKabupatenStyle(feature) {
-        const kabupatenName = feature.get('WADMKK') || feature.get('NAMOBJ') || '';
-        
-        return [
-          new ol.style.Style({
-            fill: new ol.style.Fill({
-              color: 'rgba(0, 0, 0, 0)' // transparan
-            }),
-            stroke: new ol.style.Stroke({
-              color: '#e74c3c',
-              width: 3,
-              lineDash: [5, 5]
-            })
-          }),
-          new ol.style.Style({
-            text: new ol.style.Text({
-              text: kabupatenName,
-              font: 'bold 12px Arial',
-              fill: new ol.style.Fill({
-                color: '#2c3e50'
-              }),
-              stroke: new ol.style.Stroke({
-                color: '#ffffff',
-                width: 3
-              }),
-              placement: 'point'
-            })
-          })
-        ];
-      }
-
-      // Gabungkan semua features desa dari semua layer
+      // Gabungkan semua features dari semua layer
       let allDesaFeatures = [];
       allJsonData.forEach((jsonData, index) => {
         if (typeof jsonData !== 'undefined') {
@@ -530,40 +428,79 @@
           });
           
           features.forEach(feature => {
+            // Debug: tampilkan properties dari beberapa feature untuk mengetahui struktur data
+            if (allDesaFeatures.length < 5) { // tampilkan untuk 5 feature pertama
+              console.log('Feature properties:', Object.keys(feature.getProperties()));
+              const props = feature.getProperties();
+              console.log('Suitabil_1:', props['Suitabil_1']);
+              console.log('Suitability_Class:', props['Suitability_Class']);
+              console.log('SUITABILITY:', props['SUITABILITY']);
+              console.log('Limiting_Factor:', props['Limiting_Factor']);
+            }
+            
+            // Simpan style function asli untuk referensi jika diperlukan
             feature.set('original_style', allStyleFunctions[index]);
             allDesaFeatures.push(feature);
           });
         }
       });
 
-      // Sembunyikan layer asli kecuali batas kabupaten
-      map.getLayers().forEach((layer, index) => {
-        const title = layer.get('title');
-        if (title && title !== 'BatasKabupatenSumateraUtara') {
+      // Sembunyikan layer asli
+      map.getLayers().forEach(layer => {
+        if (layer.get('title') !== 'BatasKabupatenSumateraUtara') {
           layer.setVisible(false);
-        } else if (title === 'BatasKabupatenSumateraUtara') {
-          // Ubah style batas kabupaten untuk menampilkan label
-          layer.setStyle(createKabupatenStyle);
         }
       });
 
-      // Buat layer gabungan desa dengan style suitability
+      // Buat layer gabungan dengan style suitability
       const desaSource = new ol.source.Vector({ features: allDesaFeatures });
       const desaLayer = new ol.layer.Vector({
         source: desaSource,
         style: createSuitabilityStyle,
-        title: 'Semua Desa/Kelurahan Sumatera Utara'
+        title: 'IKLSB Desa/Kelurahan Sumatera Utara'
       });
-      
-      // Tambahkan layer desa di bawah layer batas kabupaten
-      const layers = map.getLayers().getArray();
-      const batasKabIndex = layers.findIndex(layer => layer.get('title') === 'BatasKabupatenSumateraUtara');
-      if (batasKabIndex >= 0) {
-        map.getLayers().insertAt(batasKabIndex, desaLayer);
-      } else {
-        map.addLayer(desaLayer);
+      map.addLayer(desaLayer);
+
+      // Buat style untuk batas kabupaten dengan label
+      function createBoundaryStyle(feature) {
+        const name = feature.get('WADMKK') || feature.get('NAMA_KAB') || feature.get('NAME') || '';
+        
+        return new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: '#000000',
+            width: 2
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(0,0,0,0)' // transparan
+          }),
+          text: new ol.style.Text({
+            text: name,
+            font: '11px Arial, sans-serif',
+            fill: new ol.style.Fill({
+              color: '#000000'
+            }),
+            stroke: new ol.style.Stroke({
+              color: 'rgba(255, 255, 255, 0.8)',
+              width: 2
+            }),
+            offsetY: 0,
+            textAlign: 'center',
+            textBaseline: 'middle'
+          })
+        });
       }
-      
+
+      // Cari dan style ulang layer batas kabupaten
+      map.getLayers().forEach(layer => {
+        if (layer.get('title') === 'BatasKabupatenSumateraUtara' || 
+            layer.get('title')?.includes('Batas') || 
+            layer.get('title')?.includes('Boundary')) {
+          layer.setStyle(createBoundaryStyle);
+          layer.setVisible(true);
+          layer.setZIndex(1000); // pastikan di atas layer lain
+        }
+      });
+
       console.log(`Berhasil menggabungkan ${allDesaFeatures.length} desa/kelurahan.`);
 
       // Fungsi pencarian dan reset
@@ -596,13 +533,9 @@
         desaSource.addFeatures(filteredFeatures);
 
         if (filteredFeatures.length > 0) {
-          map.getView().fit(desaSource.getExtent(), { 
-            padding: [50, 50, 50, 50], 
-            maxZoom: 11, 
-            duration: 500 
-          });
+          map.getView().fit(desaSource.getExtent(), { padding: [50, 50, 50, 50], maxZoom: 11, duration: 500 });
         } else {
-          alert('Kabupaten/Kota tidak ditemukan. Silakan cek ejaan atau coba kata kunci lain.');
+          alert('Kabupaten/Kota tidak ditemukan.');
           resetMapView();
         }
       }
@@ -648,18 +581,20 @@
         
         const sc = suitabilityClass.toString().trim();
         
+        // Pencocokan dengan kategori lengkap
         if (sc === 'S1 - Sangat Sesuai') return 'S1 - Sangat Sesuai';
         if (sc === 'S2 - Cukup Sesuai') return 'S2 - Cukup Sesuai';
         if (sc === 'S3 - Sesuai Marjinal') return 'S3 - Sesuai Marjinal';
         if (sc === 'N - Tidak Sesuai') return 'N - Tidak Sesuai';
         
+        // Fallback untuk pencocokan partial
         const scLower = sc.toLowerCase();
         if (scLower.includes('s1') && scLower.includes('sangat sesuai')) return 'S1 - Sangat Sesuai';
         if (scLower.includes('s2') && scLower.includes('cukup sesuai')) return 'S2 - Cukup Sesuai';
         if (scLower.includes('s3') && (scLower.includes('sesuai marjinal') || scLower.includes('sesuai marginal'))) return 'S3 - Sesuai Marjinal';
         if (scLower.includes('n') && scLower.includes('tidak sesuai')) return 'N - Tidak Sesuai';
         
-        return suitabilityClass;
+        return suitabilityClass; // return original jika tidak cocok dengan kategori
       }
 
       function getSuitabilityClass(suitabilityClass) {
@@ -667,11 +602,13 @@
         
         const sc = suitabilityClass.toString().trim();
         
+        // Pencocokan dengan kategori lengkap
         if (sc === 'S1 - Sangat Sesuai') return 'suitability-s1';
         if (sc === 'S2 - Cukup Sesuai') return 'suitability-s2';
         if (sc === 'S3 - Sesuai Marjinal') return 'suitability-s3';
         if (sc === 'N - Tidak Sesuai') return 'suitability-n';
         
+        // Fallback untuk pencocokan partial
         const scLower = sc.toLowerCase();
         if (scLower.includes('s1') && scLower.includes('sangat sesuai')) return 'suitability-s1';
         if (scLower.includes('s2') && scLower.includes('cukup sesuai')) return 'suitability-s2';
@@ -681,43 +618,11 @@
         return '';
       }
 
-      function formatLimitingFactor(limitingFactor) {
-        if (!limitingFactor || limitingFactor === '-') return 'Tidak ada data';
-        
-        // Mapping faktor pembatas ke bahasa yang lebih mudah dipahami
-        const factorMap = {
-          'climate': 'Iklim tidak mendukung',
-          'soil': 'Kondisi tanah kurang baik',
-          'topography': 'Kemiringan lahan terlalu curam',
-          'accessibility': 'Akses jalan sulit dijangkau',
-          'environment': 'Kondisi lingkungan tidak mendukung',
-          'drainage': 'Sistem drainase buruk',
-          'slope': 'Kemiringan lahan bermasalah',
-          'ph': 'Tingkat keasaman tanah tidak sesuai',
-          'rainfall': 'Curah hujan tidak optimal',
-          'temperature': 'Suhu tidak sesuai'
-        };
-        
-        const factor = limitingFactor.toString().toLowerCase();
-        for (const [key, value] of Object.entries(factorMap)) {
-          if (factor.includes(key)) {
-            return value;
-          }
-        }
-        
-        return limitingFactor; // return original jika tidak ada mapping
-      }
-
       // Hover effect
       let hoveredFeature = null;
       const hoverStyle = new ol.style.Style({
-        stroke: new ol.style.Stroke({ 
-          color: 'rgba(255, 255, 0, 1.0)', 
-          width: 2 
-        }),
-        fill: new ol.style.Fill({ 
-          color: 'rgba(255, 255, 0, 0.3)' 
-        })
+        stroke: new ol.style.Stroke({ color: 'rgba(255, 255, 0, 1.0)', width: 3 }),
+        fill: new ol.style.Fill({ color: 'rgba(255, 255, 0, 0.3)' })
       });
 
       map.on('pointermove', function(e) {
@@ -725,7 +630,7 @@
 
         const featureAtPixel = map.forEachFeatureAtPixel(e.pixel, function(f, layer) {
           if (!f) return null;
-          if (layer && layer.get && layer.get('title') === 'Semua Desa/Kelurahan Sumatera Utara') return f;
+          if (layer && layer.get && layer.get('title') === 'IKLSB Desa/Kelurahan Sumatera Utara') return f;
           return null;
         });
 
@@ -745,7 +650,7 @@
       map.on('singleclick', function(evt) {
         const feature = map.forEachFeatureAtPixel(evt.pixel, function(f, layer) {
           if (!f) return null;
-          if (layer && layer.get && layer.get('title') === 'Semua Desa/Kelurahan Sumatera Utara') return f;
+          if (layer && layer.get && layer.get('title') === 'IKLSB Desa/Kelurahan Sumatera Utara') return f;
           return null;
         });
 
@@ -760,33 +665,23 @@
             const suitabilityLabel = getSuitabilityLabel(suitabilityClass);
             const suitabilityClassCSS = getSuitabilityClass(suitabilityClass);
             
-            const limitingFactor = props['Limiting_Factor'] || props['LIMITING'] || props['LimitingF'] || props['limiting_factor'] || '';
-            const formattedLimitingFactor = formatLimitingFactor(limitingFactor);
-
-            // Emoji berdasarkan kelas suitability
-            const emoji = suitabilityClass.includes('S1') ? '🟢' : 
-                         suitabilityClass.includes('S2') ? '🟡' : 
-                         suitabilityClass.includes('S3') ? '🟠' : 
-                         suitabilityClass.includes('N') ? '🔴' : '⚪';
+            const limitingFactor = props['Limiting_Factor'] || props['LIMITING'] || props['Faktor_Pembatas'] || 'Tidak diketahui';
 
             const content = `
-              <h3>${emoji} ${safeValue(props['NAMOBJ'])}</h3>
-              <h4><span class="suitability-indicator ${suitabilityClassCSS}">${suitabilityLabel}</span></h4>
+              <h3>${safeValue(props['NAMOBJ'])}</h3>
+              <h4>${suitabilityLabel} <span class="${suitabilityClassCSS}"></span></h4>
               <hr>
               <table class="popup-table">
-                <tr><td>📍 Nama Kecamatan</td><td>: ${safeValue(props['WADMKC'])}</td></tr>
-                <tr><td>🏛️ Nama Kabupaten/Kota</td><td>: ${safeValue(props['WADMKK'])}</td></tr>
-                <tr><td>📏 Luas Wilayah (Ha)</td><td>: ${safeValue(props['LUASWH'], 0)}</td></tr>
-                <tr><td>⚠️ Faktor Pembatas</td><td>: ${formattedLimitingFactor}</td></tr>
-              </table>
-              <hr>
-              <strong>📊 Detail Indeks Kesesuaian:</strong>
-              <table class="popup-table" style="margin-top: 10px;">
-                <tr><td>🌤️ Indeks Iklim</td><td>: ${safeValue(props['Index_Clim'] || props['INDEX_CLIMATE'])}</td></tr>
-                <tr><td>🌱 Indeks Tanah</td><td>: ${safeValue(props['Index_Soil'] || props['INDEX_SOIL'])}</td></tr>
-                <tr><td>⛰️ Indeks Topografi</td><td>: ${safeValue(props['Index_Topo'] || props['INDEX_TOPOGRAPHY'])}</td></tr>
-                <tr><td>🛤️ Indeks Aksesibilitas</td><td>: ${safeValue(props['Index_Acce'] || props['INDEX_ACCESSIBILITY'])}</td></tr>
-                <tr><td>🌍 Indeks Lingkungan</td><td>: ${safeValue(props['Index_Envi'] || props['INDEX_ENVIRONMENT'])}</td></tr>
+                <tr><td>Nama Kecamatan</td><td>: ${safeValue(props['WADMKC'])}</td></tr>
+                <tr><td>Nama Kabupaten/Kota</td><td>: ${safeValue(props['WADMKK'])}</td></tr>
+                <tr><td>Luas Wilayah (Ha)</td><td>: ${safeValue(props['LUASWH'])}</td></tr>
+                <tr><td>Faktor Pembatas</td><td>: ${safeValue(limitingFactor)}</td></tr>
+                <tr><td>Indeks Iklim</td><td>: ${safeValue(props['Index_Clim'] || props['INDEX_CLIMATE'])}</td></tr>
+                <tr><td>Indeks Tanah</td><td>: ${safeValue(props['Index_Soil'] || props['INDEX_SOIL'])}</td></tr>
+                <tr><td>Indeks Topografi</td><td>: ${safeValue(props['Index_Topo'] || props['INDEX_TOPOGRAPHY'])}</td></tr>
+                <tr><td>Indeks Aksesibilitas</td><td>: ${safeValue(props['Index_Acce'] || props['INDEX_ACCESSIBILITY'])}</td></tr>
+                <tr><td>Indeks Lingkungan</td><td>: ${safeValue(props['Index_Envi'] || props['INDEX_ENVIRONMENT'])}</td></tr>
+                <tr><td>IKLSB Total</td><td>: ${safeValue(props['IKLSB_Total'] || props['Total_Index'])}</td></tr>
               </table>
             `;
 
@@ -802,19 +697,6 @@
           popupContainer.style.display = 'none';
         }
       });
-
-      // Tambahkan kontrol zoom ke posisi awal
-      const resetViewControl = document.createElement('div');
-      resetViewControl.className = 'ol-control ol-unselectable';
-      resetViewControl.style.top = '65px';
-      resetViewControl.style.left = '0.5em';
-      resetViewControl.innerHTML = '<button title="Kembali ke tampilan awal" style="background: #3498db; color: white; border: none; padding: 5px 8px; border-radius: 3px; cursor: pointer;">🏠</button>';
-      
-      resetViewControl.addEventListener('click', function() {
-        resetMapView();
-      });
-      
-      map.getTargetElement().appendChild(resetViewControl);
 
     } // end initializeCustomFeatures
 
