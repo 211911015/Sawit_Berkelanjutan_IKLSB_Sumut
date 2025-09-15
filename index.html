@@ -516,6 +516,17 @@
 
       console.log(`Berhasil menggabungkan ${allDesaFeatures.length} desa/kelurahan.`);
 
+      // Set initial map view untuk menampilkan seluruh Sumatera Utara dengan zoom yang tepat
+      const ext = desaSource.getExtent();
+      if (ext && !isNaN(ext[0])) {
+        // Gunakan padding yang lebih besar dan batasan maxZoom yang lebih rendah untuk tampilan yang lebih luas
+        map.getView().fit(ext, { 
+          padding: [80, 80, 80, 80],  // padding lebih besar
+          maxZoom: 8,                 // zoom maksimum lebih rendah (sebelumnya 10)
+          duration: 1000              // animasi lebih lambat untuk efek yang halus
+        });
+      }
+
       // Fungsi pencarian dan reset
       const searchInput = document.getElementById('search-input');
       const resetButton = document.getElementById('btn-reset');
@@ -526,7 +537,12 @@
         desaSource.addFeatures(allDesaFeatures);
         const ext = desaSource.getExtent();
         if (ext && !isNaN(ext[0])) {
-          map.getView().fit(ext, { padding: [50,50,50,50], maxZoom: 10, duration: 500 });
+          // Konsisten dengan pengaturan view awal
+          map.getView().fit(ext, { 
+            padding: [80, 80, 80, 80], 
+            maxZoom: 8, 
+            duration: 500 
+          });
         }
       }
 
@@ -546,7 +562,12 @@
         desaSource.addFeatures(filteredFeatures);
 
         if (filteredFeatures.length > 0) {
-          map.getView().fit(desaSource.getExtent(), { padding: [50, 50, 50, 50], maxZoom: 11, duration: 500 });
+          // Untuk pencarian spesifik, gunakan zoom yang lebih tinggi
+          map.getView().fit(desaSource.getExtent(), { 
+            padding: [50, 50, 50, 50], 
+            maxZoom: 11, 
+            duration: 500 
+          });
         } else {
           alert('Kabupaten/Kota tidak ditemukan.');
           resetMapView();
