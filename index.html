@@ -526,7 +526,7 @@
         desaSource.addFeatures(allDesaFeatures);
         const ext = desaSource.getExtent();
         if (ext && !isNaN(ext[0])) {
-          map.getView().fit(ext, { padding: [50,50,50,50], duration: 500 });
+          map.getView().fit(ext, { padding: [50,50,50,50], maxZoom: 10, duration: 500 });
         }
       }
 
