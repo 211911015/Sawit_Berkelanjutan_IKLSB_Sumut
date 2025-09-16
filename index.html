@@ -26,7 +26,7 @@
       width: 100%;
     }
     #sidebar {
-      width: 350px;
+      width: 320px;
       flex-shrink: 0;
       background-color: #f8f9fa;
       padding: 20px;
@@ -96,7 +96,7 @@
       padding: 15px 18px;
       border-radius: 8px;
       border: 1px solid #cccccc;
-      min-width: 320px;
+      min-width: 300px;
       font-size: 13px;
       z-index: 10000;
       pointer-events: auto;
@@ -352,19 +352,6 @@
     function initializeCustomFeatures() {
       console.log("Peta IKLSB siap. Memulai skrip kustom untuk Sumatera Utara.");
 
-      // Tambahkan Google Satellite base layer
-      const googleSatelliteLayer = new ol.layer.Tile({
-        source: new ol.source.XYZ({
-          url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-          attributions: '© Google'
-        }),
-        title: 'Google Satellite',
-        type: 'base'
-      });
-
-      // Tambahkan base layer ke map sebagai layer pertama (background)
-      map.getLayers().insertAt(0, googleSatelliteLayer);
-
       // Data layer dan style functions untuk semua kabupaten/kota di Sumatera Utara
       const allJsonData = [
         json_Toba_1, json_TapanuliUtara_2, json_TapanuliTengah_3, json_TapanuliSelatan_4, json_Simalungun_5,
@@ -389,29 +376,23 @@
       // Fungsi untuk menentukan warna berdasarkan suitability class
       function getSuitabilityColor(suitabilityClass) {
         if (!suitabilityClass) {
-          console.log('No suitability class found');
-          return '#cccccc'; // abu-abu untuk data kosong
+          return '#cccccc';
         }
         
-        // Konversi ke string dan bersihkan dari whitespace
         const sc = suitabilityClass.toString().trim();
-        console.log('Suitability class found:', sc);
         
-        // Pencocokan dengan kategori lengkap
-        if (sc === 'S1 - Sangat Sesuai') return '#2d5016'; // hijau tua
-        if (sc === 'S2 - Cukup Sesuai') return '#85b66f'; // hijau
-        if (sc === 'S3 - Sesuai Marjinal') return '#fec980'; // kuning/orange
-        if (sc === 'N - Tidak Sesuai') return '#ff0900'; // merah
+        if (sc === 'S1 - Sangat Sesuai') return '#2d5016';
+        if (sc === 'S2 - Cukup Sesuai') return '#85b66f';
+        if (sc === 'S3 - Sesuai Marjinal') return '#fec980';
+        if (sc === 'N - Tidak Sesuai') return '#ff0900';
         
-        // Fallback untuk pencocokan partial case-insensitive
         const scLower = sc.toLowerCase();
         if (scLower.includes('s1') && scLower.includes('sangat sesuai')) return '#2d5016';
         if (scLower.includes('s2') && scLower.includes('cukup sesuai')) return '#85b66f';
         if (scLower.includes('s3') && (scLower.includes('sesuai marjinal') || scLower.includes('sesuai marginal'))) return '#fec980';
         if (scLower.includes('n') && scLower.includes('tidak sesuai')) return '#ff0900';
         
-        console.log('No matching suitability class for:', sc);
-        return '#cccccc'; // default abu-abu
+        return '#cccccc';
       }
 
       // Fungsi style baru untuk suitability
@@ -441,26 +422,15 @@
           });
           
           features.forEach(feature => {
-            // Debug: tampilkan properties dari beberapa feature untuk mengetahui struktur data
-            if (allDesaFeatures.length < 5) { // tampilkan untuk 5 feature pertama
-              console.log('Feature properties:', Object.keys(feature.getProperties()));
-              const props = feature.getProperties();
-              console.log('Suitabil_1:', props['Suitabil_1']);
-              console.log('Suitability_Class:', props['Suitability_Class']);
-              console.log('SUITABILITY:', props['SUITABILITY']);
-              console.log('Limiting_Factor:', props['Limiting_F']);
-            }
-            
-            // Simpan style function asli untuk referensi jika diperlukan
             feature.set('original_style', allStyleFunctions[index]);
             allDesaFeatures.push(feature);
           });
         }
       });
 
-      // Sembunyikan layer asli
+      // Sembunyikan layer asli kecuali batas kabupaten
       map.getLayers().forEach(layer => {
-        if (layer.get('title') !== 'BatasKabupatenSumateraUtara' && layer.get('title') !== 'Google Satellite') {
+        if (layer.get('title') !== 'BatasKabupatenSumateraUtara' && layer !== map.getLayers().getArray()[0]) {
           layer.setVisible(false);
         }
       });
@@ -484,7 +454,7 @@
             width: 2
           }),
           fill: new ol.style.Fill({
-            color: 'rgba(0,0,0,0)' // transparan
+            color: 'rgba(0,0,0,0)'
           }),
           text: new ol.style.Text({
             text: name,
@@ -510,20 +480,18 @@
             layer.get('title')?.includes('Boundary')) {
           layer.setStyle(createBoundaryStyle);
           layer.setVisible(true);
-          layer.setZIndex(1000); // pastikan di atas layer lain
+          layer.setZIndex(1000);
         }
       });
 
       console.log(`Berhasil menggabungkan ${allDesaFeatures.length} desa/kelurahan.`);
 
-      // Set initial map view untuk menampilkan seluruh Sumatera Utara dengan zoom yang tepat
+      // Set initial map view
       const ext = desaSource.getExtent();
       if (ext && !isNaN(ext[0])) {
-        // Gunakan padding yang lebih besar dan batasan maxZoom yang lebih rendah untuk tampilan yang lebih luas
         map.getView().fit(ext, { 
-          padding: [80, 80, 80, 80],  // padding lebih besar
-          maxZoom: 8,                 // zoom maksimum lebih rendah (sebelumnya 10)
-          duration: 1000              // animasi lebih lambat untuk efek yang halus
+          padding: [50, 50, 50, 50], 
+          duration: 500 
         });
       }
 
@@ -537,10 +505,8 @@
         desaSource.addFeatures(allDesaFeatures);
         const ext = desaSource.getExtent();
         if (ext && !isNaN(ext[0])) {
-          // Konsisten dengan pengaturan view awal
           map.getView().fit(ext, { 
-            padding: [80, 80, 80, 80], 
-            maxZoom: 8, 
+            padding: [50, 50, 50, 50], 
             duration: 500 
           });
         }
@@ -562,7 +528,6 @@
         desaSource.addFeatures(filteredFeatures);
 
         if (filteredFeatures.length > 0) {
-          // Untuk pencarian spesifik, gunakan zoom yang lebih tinggi
           map.getView().fit(desaSource.getExtent(), { 
             padding: [50, 50, 50, 50], 
             maxZoom: 11, 
@@ -615,20 +580,18 @@
         
         const sc = suitabilityClass.toString().trim();
         
-        // Pencocokan dengan kategori lengkap
         if (sc === 'S1 - Sangat Sesuai') return 'S1 - Sangat Sesuai';
         if (sc === 'S2 - Cukup Sesuai') return 'S2 - Cukup Sesuai';
         if (sc === 'S3 - Sesuai Marjinal') return 'S3 - Sesuai Marjinal';
         if (sc === 'N - Tidak Sesuai') return 'N - Tidak Sesuai';
         
-        // Fallback untuk pencocokan partial
         const scLower = sc.toLowerCase();
         if (scLower.includes('s1') && scLower.includes('sangat sesuai')) return 'S1 - Sangat Sesuai';
         if (scLower.includes('s2') && scLower.includes('cukup sesuai')) return 'S2 - Cukup Sesuai';
         if (scLower.includes('s3') && (scLower.includes('sesuai marjinal') || scLower.includes('sesuai marginal'))) return 'S3 - Sesuai Marjinal';
         if (scLower.includes('n') && scLower.includes('tidak sesuai')) return 'N - Tidak Sesuai';
         
-        return suitabilityClass; // return original jika tidak cocok dengan kategori
+        return suitabilityClass;
       }
 
       function getSuitabilityClass(suitabilityClass) {
@@ -636,13 +599,11 @@
         
         const sc = suitabilityClass.toString().trim();
         
-        // Pencocokan dengan kategori lengkap
         if (sc === 'S1 - Sangat Sesuai') return 'suitability-s1';
         if (sc === 'S2 - Cukup Sesuai') return 'suitability-s2';
         if (sc === 'S3 - Sesuai Marjinal') return 'suitability-s3';
         if (sc === 'N - Tidak Sesuai') return 'suitability-n';
         
-        // Fallback untuk pencocokan partial
         const scLower = sc.toLowerCase();
         if (scLower.includes('s1') && scLower.includes('sangat sesuai')) return 'suitability-s1';
         if (scLower.includes('s2') && scLower.includes('cukup sesuai')) return 'suitability-s2';
@@ -680,7 +641,7 @@
         map.getTargetElement().style.cursor = hoveredFeature ? 'pointer' : '';
       });
 
-      // Click event untuk popup
+      // Click event untuk popup - IMPROVED positioning
       map.on('singleclick', function(evt) {
         const feature = map.forEachFeatureAtPixel(evt.pixel, function(f, layer) {
           if (!f) return null;
@@ -691,10 +652,7 @@
         if (feature) {
           try {
             const props = feature.getProperties();
-            const geom = feature.getGeometry();
-            const closest = geom.getClosestPoint(evt.coordinate);
-
-            // Ambil data suitability dan limiting factor
+            
             const suitabilityClass = props['Suitabil_1'] || props['Suitability_Class'] || props['SUITABILITY'] || '';
             const suitabilityLabel = getSuitabilityLabel(suitabilityClass);
             const suitabilityClassCSS = getSuitabilityClass(suitabilityClass);
@@ -721,7 +679,7 @@
 
             popupContent.innerHTML = content;
             popupContainer.style.display = 'block';
-            overlay.setPosition(closest);
+            overlay.setPosition(evt.coordinate);
 
           } catch (err) {
             console.error("Error saat membuat konten popup:", err);
@@ -732,9 +690,9 @@
         }
       });
 
-    } // end initializeCustomFeatures
+    }
 
-    // Tunggu sampai semua variabel dan objek siap
+    // Tunggu sampai semua variabel dan objek siap - OPTIMIZED
     const mapReadyCheck = setInterval(function() {
       if (typeof map !== 'undefined' && 
           typeof ol !== 'undefined' && 
@@ -743,7 +701,7 @@
         clearInterval(mapReadyCheck);
         initializeCustomFeatures();
       }
-    }, 100);
+    }, 50);
   </script>
 </body>
 </html>
